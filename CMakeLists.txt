@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.20.0)
+project(DATA_STRUCTURES LANGUAGES C)
+
+# set output directory
+set(STRUCTURES_LINK structures)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_PDB_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/build)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin)
+
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/bin)
+
+# add subdirectories
+add_subdirectory(src)
+add_subdirectory(test)
+
+# append include and source files
+include_directories(${INCLUDE_DIR_LIST})
