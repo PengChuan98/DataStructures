@@ -102,6 +102,7 @@ bool AppendSequence(SequenceList *list, ElementType value)
 
     list->data[list->length] = value;
     list->length++;
+    return true;
 }
 
 /**
@@ -145,6 +146,7 @@ bool RemoveSequenceByValue(SequenceList *list, ElementType value, bool (*Compare
     // WARNING 但是有个非常非常重要的问题，Element的类型必须是可以比较的
     // WARNING 如果不可以比较，那么就没有办法查找到元素了
     // WARNING SO，最好的办法还是传入一个比较函数，这样就可以按照比较函数来查找了
+    return false;
 }
 
 /**
