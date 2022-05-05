@@ -1,11 +1,13 @@
 #include "sequence.h"
 #include <stdlib.h>
 
-void ShowSequence(SequenceList *list)
+void ShowSequence(SequenceList *list, const char *msg)
 {
+    printf("-> %s\n", msg);
     if (list->data == NULL)
     {
         printf("ShowSequence is empty.\n");
+        printf("\n---------------------------------------------------------------------------------------\n");
         return;
     }
     printf("length: %d\n", list->length);
@@ -36,18 +38,18 @@ void main()
     if (CreateSequence(&list, value, 10) == false)
         printf("CreateSequence error\n");
     else
-        ShowSequence(&list);
+        ShowSequence(&list,"CreateSequence");
 
     // insert sequence value
     int index = 0;
     InsertSequence(&list, 1024, index);
     printf("insert index is : %d\n", index);
-    ShowSequence(&list);
+    ShowSequence(&list,"InsertSequence");
 
     // append sequence value
     AppendSequence(&list, 2048);
     printf("append index is : %d\n", list.length - 1);
-    ShowSequence(&list);
+    ShowSequence(&list,"AppendSequence");
 
     // remove sequence value
     ElementType value_remove = -1;
@@ -55,7 +57,7 @@ void main()
     RemoveSequenceByIndex(&list, &value_remove, index);
     printf("remove index is : %d\n", index);
     printf("remove value is : %d\n", value_remove);
-    ShowSequence(&list);
+    ShowSequence(&list,"RemoveSequenceByIndex");
 
     // merge sequence value
     SequenceList list_merge;
@@ -67,9 +69,21 @@ void main()
     }
     CreateSequence(&list_merge, value_merge, 10);
     MergeSequence(&list_merge, &list);
-    ShowSequence(&list_merge);
+    ShowSequence(&list_merge,"MergeSequence");
+
+    // expand sequence and copy sequence
+    SequenceList list_expand;
+    SequenceList list_cp;
+    CopySequence(&list_cp, &list);
+    ShowSequence(&list_cp,"CopySequence");
+    ExpandSequence(&list_expand, &list_cp, 20);
+    ShowSequence(&list_expand,"ExpandSequence");
+    
 
     // destroy sequence list
     DestroySequence(&list);
-    ShowSequence(&list);
+    ShowSequence(&list,"DestroySequence");
+    
+    printf("NED\n");
+    printf("---------------------------------------------------------------------------------------\n");
 }
