@@ -14,20 +14,9 @@
 #ifndef _SEQUENCE_H_
 #define _SEQUENCE_H_
 
+#include "core.h"
 #include <stdio.h>
 #include <malloc.h>
-
-// set max size
-#define MAX_SIZE 100
-
-// set bool value
-typedef int bool;
-
-#define true 1
-#define false -1
-
-// set element type
-typedef int ElementType;
 
 typedef struct _sequence_t
 {
@@ -45,6 +34,8 @@ bool AppendSequence(SequenceList *list, ElementType value);
 bool RemoveSequenceByIndex(SequenceList *list, ElementType *value, int index);
 bool RemoveSequenceByValue(SequenceList *list, ElementType value, bool (*Compare)(ElementType a, ElementType b));
 bool MergeSequence(SequenceList *dst, SequenceList *src);
+bool ExpandSequence(SequenceList *dst, SequenceList *src, int size);
+bool CopySequence(SequenceList *dst, SequenceList *src);
 bool DestroySequence(SequenceList *list);
 
 #endif

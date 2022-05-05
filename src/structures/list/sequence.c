@@ -175,6 +175,48 @@ bool MergeSequence(SequenceList *dst, SequenceList *src)
     }
 }
 
+/**
+ * @brief
+ * expand the size of list
+ * @param dst
+ * @param src
+ * @param size
+ * @return true
+ * @return false
+ */
+bool ExpandSequence(SequenceList *dst, SequenceList *src, int size)
+{
+    if (size <= 0)
+    {
+        printf("ExpandSequence error: size must be greater than 0\n");
+        return false;
+    }
+
+    // reset dst
+    if (InitSequence(dst, src->size + size) && MergeSequence(dst, src) && DestroySequence(src))
+    {
+        return true;
+    }
+    else
+    {
+        printf("ExpandSequence error: init or merge failed\n");
+        return false;
+    }
+}
+
+bool CopySequence(SequenceList *dst, SequenceList *src)
+{
+    if (InitSequence(dst, src->size) && MergeSequence(dst, src))
+    {
+        return true;
+    }
+    else
+    {
+        printf("CopySequence error: init or merge failed\n");
+        return false;
+    }
+}
+
 bool DestroySequence(SequenceList *list)
 {
     if (list->data == NULL)
