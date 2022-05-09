@@ -19,6 +19,7 @@ endmacro()
 FIND_INCLUDE_DIR(INCLUDE_DIR_LIST ${PROJECT_SOURCE_DIR})
 message(STATUS "INCLUDE_DIR_LIST = ${INCLUDE_DIR_LIST}")
 
+# ! the GLOB_RECURSE is not a good idea, because it will not find the files in the subdirectories
 # collect all source files
 file(GLOB_RECURSE SRC_FILE_LIST "${PROJECT_SOURCE_DIR}/*.c" "${PROJECT_SOURCE_DIR}/*.cpp")
 message(STATUS "SRC_FILE_LIST = ${SRC_FILE_LIST}")
