@@ -1,3 +1,3 @@
 @echo off
 
-bin/test.exe
+cmd /c code .

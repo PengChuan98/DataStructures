@@ -12,22 +12,21 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
-// set element type
-typedef int ElementType;
+#include "core.h"
 
 // set node struct
 struct _Node;
-typedef struct _Node *PtrToNode;
-typedef PtrToNode List;
-typedef PtrToNode Position;
+typedef struct _Node *PtrNode;
+typedef PtrNode List;
+
+// ! 最简单的list，单向，头插法
 
 typedef struct _Node
 {
     ElementType data;
-    Position next;
+    PtrNode next;
 } Node;
 
-
-
+bool InitList(List *list);
 
 #endif
